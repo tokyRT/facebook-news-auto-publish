@@ -1,19 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const mongoose = require('mongoose');
 const apiRoutes = require('./routes/api');
 
-//database connection 
-mongoose.connect(process.env.MONGODB_URI);
-const database = mongoose.connection;
-database.on("error", (error) => {
-  console.error(error);
-});
-
-database.once("connected", () => {
-  console.log("MongoDB: Database connected");
-});
 
 
 //express
