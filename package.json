@@ -1,0 +1,31 @@
+{
+  "name": "express-mongodb-template",
+  "version": "0.0.0",
+  "main": "./src/app.js",
+  "engines": {
+    "node": "^12.19.0 || ^14.15.0 || ^16.13.0",
+    "dev": "nodemon src/app.js"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon ./src/app.js",
+    "start": "node ./src/app.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "express-urlrewrite": "^2.0.0",
+    "mongoose": "^6.8.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.8.0",
+    "twilio": "^3.84.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.18.0"
+  }
+}
