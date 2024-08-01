@@ -1,15 +1,9 @@
-# Express and mongoose template for basic REST API
+# Facebook News Auto Publish
+## About
+Auto publish news on a facebook page everyday without human intervention.
 
-## To-do
-- [x] basic express app
-- [x] mongodb connection
-- [x] folder structure
-- [x] model and controller template
-- [ ] swagger doc initialization
-- [ ] unit test
-- [ ] basic authentication
-  
-## Installation
-    npm install
-## Run the application
-    npm run dev
+## How it works
+This project uses an API that scraps malagasy newspapers and then post it on a facebook page using the Facebook Graph API. 
+To automate the process I used cron jobs.
+
+You can visit the facebook page [here](https://www.facebook.com/daily.news.mg/)
