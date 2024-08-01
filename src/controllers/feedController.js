@@ -1,7 +1,10 @@
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
 const VAOVAO_BASE_URL = process.env.VAOVAO_BASE_URL;
 const FB_GRAPH_API = process.env.FB_GRAPH_API;
 const FB_PAGE_ID = process.env.FB_PAGE_ID;
 const FB_ACCESS_TOKEN = process.env.FB_ACCESS_TOKEN;
+
 const fetchNews = async () => {
     const res = await fetch(VAOVAO_BASE_URL);
     const news = await res.json();
@@ -22,16 +25,22 @@ const publishToFacebook = async (article, articleDetail) => {
     content += body;
     content += "source: " + article.link;
 
-    const res = await fetch(`${FB_GRAPH_API}/${FB_PAGE_ID}/photos`, {
+    const noImage = articleDetail.img === 'no_image';
+    const edge = noImage ? 'feed' : 'photos';
+    const requestBody = {
+        message: content,
+        access_token: FB_ACCESS_TOKEN
+    }
+    if (!noImage) {
+        requestBody.url = articleDetail.img;
+    }
+
+    const res = await fetch(`${FB_GRAPH_API}/${FB_PAGE_ID}/${edge}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            message: content,
-            url: articleDetail.img,
-            access_token: FB_ACCESS_TOKEN
-        })
+        body: JSON.stringify(requestBody)
     });
 
     return res.json();
